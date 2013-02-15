@@ -225,18 +225,6 @@ class ApplicationTest extends \PhraseanetPHPUnitAbstract
             ->will($this->returnValue($locale));
     }
 
-    private function getAuthMock()
-    {
-        $auth = $this->getMockBuilder('Session_Authentication_Interface')
-            ->disableOriginalConstructor()
-            ->getMock();
-        $auth->expects($this->any())
-            ->method('get_user')
-            ->will($this->returnValue(self::$DI['user']));
-
-        return $auth;
-    }
-
     private function getApp()
     {
         $app = new Application('test');
