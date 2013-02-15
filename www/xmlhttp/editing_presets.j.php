@@ -19,7 +19,7 @@ use Alchemy\Phrasea\Application;
 require_once __DIR__ . "/../../vendor/autoload.php";
 
 $app = new Application();
-$usr_id = $app['phraseanet.user']->get_id();
+$usr_id = $app['authentication']->getUser()->get_id();
 
 
 $request = http_request::getInstance();

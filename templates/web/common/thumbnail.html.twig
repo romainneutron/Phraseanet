@@ -42,7 +42,7 @@
 
 
 
-  {% if app.isAuthenticated() == true %}
+  {% if app['authentication'].isAuthenticated() == true %}
   {% set url = thumbnail.get_url() %}
   {% else %}
   {% set url = thumbnail.get_permalink().get_url() %}
@@ -146,7 +146,7 @@
 
 
 
-  {% if app.isAuthenticated() == true %}
+  {% if app['authentication'].isAuthenticated() == true %}
   {% set url = thumbnail.get_url() %}
   {% else %}
   {% set url = thumbnail.get_permalink().get_url() %}

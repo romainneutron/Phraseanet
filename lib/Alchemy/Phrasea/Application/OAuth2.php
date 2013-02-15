@@ -74,14 +74,14 @@ return call_user_func(function($environment = 'prod') {
             );
         }
 
-        if (!$app->isAuthenticated()) {
+        if (!$app['authentication']->isAuthenticated()) {
             if ($action_login !== null) {
                 try {
                     $auth = new \Session_Authentication_Native(
                             $app, $request->get("login"), $request->get("password")
                     );
 
-                    $app->openAccount($auth);
+                    $app['authentication']->openAccount($auth);
                 } catch (\Exception $e) {
                     return new Response($app['twig']->render($template, array("auth" => $oauth2_adapter)));
                 }
@@ -93,7 +93,7 @@ return call_user_func(function($environment = 'prod') {
         //check if current client is already authorized by current user
         $user_auth_clients = \API_OAuth2_Application::load_authorized_app_by_user(
                 $app
-                , $app['phraseanet.user']
+                , $app['authentication']->getUser()
         );
 
         foreach ($user_auth_clients as $auth_client) {
@@ -102,7 +102,7 @@ return call_user_func(function($environment = 'prod') {
             }
         }
 
-        $account = $oauth2_adapter->updateAccount($app['phraseanet.user']->get_id());
+        $account = $oauth2_adapter->updateAccount($app['authentication']->getUser()->get_id());
 
         $params['account_id'] = $account->get_id();
 
