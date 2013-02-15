@@ -61,14 +61,14 @@ return call_user_func(function($environment = 'prod') {
             throw new \API_V1_exception_forbidden(_('The use of phraseanet Navigator is not allowed'));
         }
 
-        if ($app->isAuthenticated()) {
+        if ($app['authentication']->isAuthenticated()) {
             return;
         }
 
         $user = \User_Adapter::getInstance($oauth2_adapter->get_usr_id(), $app);
         $auth = new \Session_Authentication_None($user);
 
-        $app->openAccount($auth, $oauth2_adapter->get_ses_id());
+        $app['authentication']->openAccount($auth, $oauth2_adapter->get_ses_id());
         $oauth2_adapter->remember_this_ses_id($app['session']->get('session_id'));
 
         return;
@@ -641,19 +641,19 @@ return call_user_func(function($environment = 'prod') {
      */
     $app->get('/feeds/list/', function(SilexApplication $app) {
         return $app['api']
-                ->search_publications($app['request'], $app['phraseanet.user'])
+                ->search_publications($app['request'], $app['authentication']->getUser())
                 ->get_response();
     });
 
     $app->get('/feeds/content/', function(SilexApplication $app) {
         return $app['api']
-                ->get_publications($app['request'], $app['phraseanet.user'])
+                ->get_publications($app['request'], $app['authentication']->getUser())
                 ->get_response();
     });
 
     $app->get('/feeds/entry/{entry_id}/', function(SilexApplication $app, $entry_id) {
         return $app['api']
-                ->get_feed_entry($app['request'], $entry_id, $app['phraseanet.user'])
+                ->get_feed_entry($app['request'], $entry_id, $app['authentication']->getUser())
                 ->get_response();
     })->assert('entry_id', '\d+');
 
@@ -670,7 +670,7 @@ return call_user_func(function($environment = 'prod') {
      */
     $app->get('/feeds/{feed_id}/content/', function(SilexApplication $app, $feed_id) {
         return $app['api']
-                ->get_publication($app['request'], $feed_id, $app['phraseanet.user'])
+                ->get_publication($app['request'], $feed_id, $app['authentication']->getUser())
                 ->get_response();
     })->assert('feed_id', '\d+');
 
