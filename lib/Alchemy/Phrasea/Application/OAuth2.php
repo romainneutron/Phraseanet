@@ -12,6 +12,8 @@
 namespace Alchemy\Phrasea\Application;
 
 use Alchemy\Phrasea\Application as PhraseaApplication;
+use Alchemy\Phrasea\Authentication\Exception\AccountLockedException;
+use Alchemy\Phrasea\Authentication\Exception\RequireCaptchaException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -76,15 +78,16 @@ return call_user_func(function($environment = 'prod') {
 
         if (!$app['authentication']->isAuthenticated()) {
             if ($action_login !== null) {
-                try {
-                    $auth = new \Session_Authentication_Native(
-                            $app, $request->get("login"), $request->get("password")
-                    );
 
-                    $app['authentication']->openAccount($auth);
-                } catch (\Exception $e) {
-                    return new Response($app['twig']->render($template, array("auth" => $oauth2_adapter)));
+                try {
+                    $usr_id = $app['auth.native']->isValid($request->get("login"), $request->get("password"), $request);
+                } catch (RequireCaptchaException $e) {
+                    return $app->redirect($app->path('oauth2_authorize'), array('error' => 'captcha'));
+                } catch (AccountLockedException $e) {
+                    return $app->redirect($app->path('oauth2_authorize'), array('error' => 'account-locked'));
                 }
+
+                $app['authentication']->openAccount(\User_Adapter::getInstance($usr_id, $app));
             } else {
                 return new Response($app['twig']->render($template, array("auth" => $oauth2_adapter)));
             }
@@ -128,7 +131,9 @@ return call_user_func(function($environment = 'prod') {
         }
     };
 
-    $app->match('/authorize', $authorize_func)->method('GET|POST');
+    $app->match('/authorize', $authorize_func)
+        ->method('GET|POST')
+        ->bind('oauth2_authorize');
 
     /**
      *  TOKEN ENDPOINT
@@ -139,7 +144,7 @@ return call_user_func(function($environment = 'prod') {
             throw new HttpException(400, 'This route requires the use of the https scheme', null, array('content-type' => 'application/json'));
         }
 
-        $app['oauth']->grantAccessToken();
+        $app['oauth']->grantAccessToken($request);
         ob_flush();
         flush();
 
