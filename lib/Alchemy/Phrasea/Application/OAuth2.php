@@ -81,6 +81,12 @@ return call_user_func(function($environment = 'prod') {
 
                 try {
                     $usr_id = $app['auth.native']->isValid($request->get("login"), $request->get("password"), $request);
+
+                    if (!$usr_id) {
+                        $app['session']->getFlashBag()->set('error', _('login::erreur: Erreur d\'authentification'));
+
+                        return $app->redirect($app->path('oauth2_authorize'));
+                    }
                 } catch (RequireCaptchaException $e) {
                     return $app->redirect($app->path('oauth2_authorize'), array('error' => 'captcha'));
                 } catch (AccountLockedException $e) {
