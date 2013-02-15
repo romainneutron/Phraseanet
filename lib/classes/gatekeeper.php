@@ -91,7 +91,7 @@ class gatekeeper
             $this->_script_name = array_pop($php_script);
         }
 
-        if (!$this->app->isAuthenticated()) {
+        if (!$this->app['authentication']->isAuthenticated()) {
             switch ($this->_directory) {
                 case 'client':
                     $this->give_guest_access();
@@ -119,12 +119,12 @@ class gatekeeper
 
         switch ($this->_directory) {
             case 'thesaurus2':
-                if (!$this->app['phraseanet.user']->ACL()->has_access_to_module('thesaurus')) {
+                if (!$this->app['authentication']->getUser()->ACL()->has_access_to_module('thesaurus')) {
                     phrasea::headers(403);
                 }
                 break;
             case 'report':
-                if (!$this->app['phraseanet.user']->ACL()->has_right('report')) {
+                if (!$this->app['authentication']->getUser()->ACL()->has_right('report')) {
                     phrasea::headers(403);
                 }
                 break;
@@ -149,7 +149,7 @@ class gatekeeper
         if (!is_null($parm['nolog']) && phrasea::guest_allowed($this->app)) {
             try {
                 $auth = new Session_Authentication_Guest($this->app);
-                $this->app->openAccount($auth);
+                $this->app['authentication']->openAccount($auth);
             } catch (Exception $e) {
                 $url = '/login/?redirect=' . $parm['redirect']
                     . '&error=' . urlencode($e->getMessage());
@@ -169,7 +169,7 @@ class gatekeeper
      */
     public function require_session()
     {
-        if ($this->app->isAuthenticated()) {
+        if ($this->app['authentication']->isAuthenticated()) {
             return true;
         }
         phrasea::headers(403);
