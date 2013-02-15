@@ -96,7 +96,7 @@ class Installer
     {
         $template = new \SplFileInfo(__DIR__ . '/../../../conf.d/data_templates/' . $this->template . '-simple.xml');
         $databox = \databox::create($this->app, $this->dbConn, $template, $this->app['phraseanet.registry']);
-        $this->app['phraseanet.user']->ACL()
+        $this->app['authentication']->getUser()->ACL()
             ->give_access_to_sbas(array($databox->get_sbas_id()))
             ->update_rights_to_sbas(
                 $databox->get_sbas_id(), array(
@@ -105,10 +105,10 @@ class Installer
                 )
         );
 
-        $collection = \collection::create($this->app, $databox, $this->app['phraseanet.appbox'], 'test', $this->app['phraseanet.user']);
+        $collection = \collection::create($this->app, $databox, $this->app['phraseanet.appbox'], 'test', $this->app['authentication']->getUser());
 
-        $this->app['phraseanet.user']->ACL()->give_access_to_base(array($collection->get_base_id()));
-        $this->app['phraseanet.user']->ACL()->update_rights_to_base($collection->get_base_id(), array(
+        $this->app['authentication']->getUser()->ACL()->give_access_to_base(array($collection->get_base_id()));
+        $this->app['authentication']->getUser()->ACL()->update_rights_to_base($collection->get_base_id(), array(
             'canpush'         => 1, 'cancmd'          => 1
             , 'canputinalbum'   => 1, 'candwnldhd'      => 1, 'candwnldpreview' => 1, 'canadmin'        => 1
             , 'actif'           => 1, 'canreport'       => 1, 'canaddrecord'    => 1, 'canmodifrecord'  => 1

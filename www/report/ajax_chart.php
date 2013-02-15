@@ -38,7 +38,7 @@ $parm = $request->get_parms('id');
 
 $id = $parm['id'];
 
-$dashboard = new module_report_dashboard($app, $app['phraseanet.user']->get_id());
+$dashboard = new module_report_dashboard($app, $app['authentication']->getUser()->get_id());
 
 $var = array(
     'rs'         => $dashboard->dashboard['activity_day'][$id],

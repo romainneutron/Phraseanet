@@ -76,32 +76,6 @@ class ApplicationTest extends \PhraseanetPHPUnitAbstract
     /**
      * @covers Alchemy\Phrasea\Application
      */
-    public function testOpenAccount()
-    {
-        $app = new Application('test');
-
-        $this->assertFalse($app->isAuthenticated());
-        $app->openAccount($this->getAuthMock());
-        $this->assertTrue($app->isAuthenticated());
-    }
-
-    /**
-     * @covers Alchemy\Phrasea\Application
-     */
-    public function testCloseAccount()
-    {
-        $app = new Application('test');
-
-        $this->assertFalse($app->isAuthenticated());
-        $app->openAccount($this->getAuthMock());
-        $this->assertTrue($app->isAuthenticated());
-        $app->closeAccount();
-        $this->assertFalse($app->isAuthenticated());
-    }
-
-    /**
-     * @covers Alchemy\Phrasea\Application
-     */
     public function testCookieLocale()
     {
         $app = $this->getAppThatReturnLocale();

@@ -159,7 +159,7 @@ User_Adapter::updateClientInfos($app, 5);
                     dataType: 'json',
                     data: {
                         module : 5,
-                        usr : <?php echo $app['phraseanet.user']->get_id() ?>
+                        usr : <?php echo $app['authentication']->getUser()->get_id() ?>
                     },
                     error: function(){
                         window.setTimeout("sessionactive();", 10000);

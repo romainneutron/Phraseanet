@@ -32,7 +32,7 @@ $event = new GetResponseEvent($app, Request::createFromGlobals(), HttpKernelInte
 $app->addLocale($event);
 $app->initSession($event);
 
-if ( ! $app['phraseanet.user']->ACL()->has_right('report'))
+if ( ! $app['authentication']->getUser()->ACL()->has_right('report'))
     phrasea::headers(403);
 
 
@@ -41,7 +41,7 @@ $dmin = isset($_POST['dmin']) ? $_POST['dmin'] : false;
 $dmax = isset($_POST['dmax']) ? $_POST['dmax'] : false;
 ///////Construct dashboard
 try {
-    $dashboard = new module_report_dashboard($app, $app['phraseanet.user'], $sbasid);
+    $dashboard = new module_report_dashboard($app, $app['authentication']->getUser(), $sbasid);
 
     if ($dmin && $dmax) {
         $dashboard->setDate($dmin, $dmax);

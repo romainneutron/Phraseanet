@@ -62,10 +62,10 @@ ORDER BY sbas.ord";
 $select_bases = "";
 $nbases = 0;
 $last_base = null;
-$usr_id = $app['phraseanet.user']->get_id();
+$usr_id = $app['authentication']->getUser()->get_id();
 
 $stmt = $conn->prepare($sql);
-$stmt->execute(array(':usr_id' => $app['phraseanet.user']->get_id()));
+$stmt->execute(array(':usr_id' => $app['authentication']->getUser()->get_id()));
 $rs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt->closeCursor();
 

@@ -39,7 +39,7 @@ phrasea::headers();
 User_Adapter::updateClientInfos($app, 4);
 
 ///////Construct dashboard
-$dashboard = new module_report_dashboard($app, $app['phraseanet.user']);
+$dashboard = new module_report_dashboard($app, $app['authentication']->getUser());
 $dashboard->execute();
 
 

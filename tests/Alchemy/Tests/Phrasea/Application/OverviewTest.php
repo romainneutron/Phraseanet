@@ -22,7 +22,7 @@ class ApplicationOverviewTest extends \PhraseanetWebTestCaseAuthenticatedAbstrac
     function testDatafilesNonExistentSubdef()
     {
         self::$DI['client']->request('GET', '/datafiles/' . self::$DI['record_1']->get_sbas_id() . '/' . self::$DI['record_1']->get_record_id() . '/asubdefthatdoesnotexists/');
-        
+
         $this->assertNotFoundResponse(self::$DI['client']->getResponse());
     }
 
@@ -55,7 +55,7 @@ class ApplicationOverviewTest extends \PhraseanetWebTestCaseAuthenticatedAbstrac
 
     function testDatafilesRouteNotAuthenticated()
     {
-        self::$DI['app']->closeAccount();
+        self::$DI['app']['authentication']->closeAccount();
         self::$DI['client']->request('GET', '/datafiles/' . self::$DI['record_1']->get_sbas_id() . '/' . self::$DI['record_1']->get_record_id() . '/preview/');
 
         $this->assertForbiddenResponse(self::$DI['client']->getResponse());
@@ -63,7 +63,7 @@ class ApplicationOverviewTest extends \PhraseanetWebTestCaseAuthenticatedAbstrac
 
     function testDatafilesRouteNotAuthenticatedUnknownSubdef()
     {
-        self::$DI['app']->closeAccount();
+        self::$DI['app']['authentication']->closeAccount();
         self::$DI['client']->request('GET', '/datafiles/' . self::$DI['record_1']->get_sbas_id() . '/' . self::$DI['record_1']->get_record_id() . '/notfoundreview/');
 
         $this->assertForbiddenResponse(self::$DI['client']->getResponse());
@@ -71,14 +71,14 @@ class ApplicationOverviewTest extends \PhraseanetWebTestCaseAuthenticatedAbstrac
 
     function testPermalinkAuthenticated()
     {
-        $this->assertTrue(self::$DI['app']->isAuthenticated());
+        $this->assertTrue(self::$DI['app']['authentication']->isAuthenticated());
         $this->get_a_permalink();
     }
 
     function testPermalinkNotAuthenticated()
     {
-        self::$DI['app']->closeAccount();
-        $this->assertFalse(self::$DI['app']->isAuthenticated());
+        self::$DI['app']['authentication']->closeAccount();
+        $this->assertFalse(self::$DI['app']['authentication']->isAuthenticated());
         $this->get_a_permalink();
     }
 

@@ -14,4 +14,6 @@ namespace Alchemy\Phrasea\Core;
 final class PhraseaEvents
 {
     const LOGOUT = 'phrasea.logout';
+    const PRE_AUTHENTICATE = 'phrasea.pre-authenticate';
+    const POST_AUTHENTICATE = 'phrasea.post-authenticate';
 }
