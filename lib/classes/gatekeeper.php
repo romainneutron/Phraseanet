@@ -93,14 +93,6 @@ class gatekeeper
 
         if (!$this->app['authentication']->isAuthenticated()) {
             switch ($this->_directory) {
-                case 'client':
-                    $this->give_guest_access();
-                    if ($request->isXmlHttpRequest()) {
-                        phrasea::headers(404);
-                    } else {
-                        phrasea::redirect('/login/?redirect=' . $_SERVER['REQUEST_URI']);
-                    }
-                    break;
                 case 'thesaurus2':
                     if ($this->_PHP_SELF == '/thesaurus2/xmlhttp/getterm.x.php'
                         || $this->_PHP_SELF == '/thesaurus2/xmlhttp/searchcandidate.x.php'
@@ -108,9 +100,6 @@ class gatekeeper
                         return;
                     }
                     phrasea::redirect('/login/?redirect=/thesaurus2');
-                    break;
-                case 'report':
-                    phrasea::redirect('/login/?redirect=' . $_SERVER['REQUEST_URI']);
                     break;
             }
         } elseif ($_SERVER['PHP_SELF'] === '/login/logout/') {

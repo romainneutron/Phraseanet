@@ -115,7 +115,7 @@ class Upload implements ControllerProviderInterface
         return $app['twig']->render(
             'prod/upload/upload-flash.html.twig', array(
             'sessionId'           => session_id(),
-            'collections'         => $this->getGrantedCollections($app['phraseanet.user']),
+            'collections'         => $this->getGrantedCollections($app['authentication']->getUser()),
             'maxFileSize'         => $maxFileSize,
             'maxFileSizeReadable' => \p4string::format_octets($maxFileSize)
         ));
@@ -135,7 +135,7 @@ class Upload implements ControllerProviderInterface
 
         return $app['twig']->render(
             'prod/upload/upload.html.twig', array(
-            'collections'         => $this->getGrantedCollections($app['phraseanet.user']),
+            'collections'         => $this->getGrantedCollections($app['authentication']->getUser()),
             'maxFileSize'         => $maxFileSize,
             'maxFileSizeReadable' => \p4string::format_octets($maxFileSize)
         ));
@@ -180,7 +180,7 @@ class Upload implements ControllerProviderInterface
             throw new \Exception_BadRequest('Missing base_id parameter');
         }
 
-        if (!$app['phraseanet.user']->ACL()->has_right_on_base($base_id, 'canaddrecord')) {
+        if (!$app['authentication']->getUser()->ACL()->has_right_on_base($base_id, 'canaddrecord')) {
             throw new \Exception_Forbidden('User is not allowed to add record on this collection');
         }
 
@@ -201,7 +201,7 @@ class Upload implements ControllerProviderInterface
             $collection = \collection::get_from_base_id($app, $base_id);
 
             $lazaretSession = new LazaretSession();
-            $lazaretSession->setUsrId($app['phraseanet.user']->get_id());
+            $lazaretSession->setUsrId($app['authentication']->getUser()->get_id());
 
             $app['EM']->persist($lazaretSession);
 

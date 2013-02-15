@@ -66,9 +66,8 @@ return call_user_func(function($environment = 'prod') {
         }
 
         $user = \User_Adapter::getInstance($oauth2_adapter->get_usr_id(), $app);
-        $auth = new \Session_Authentication_None($user);
 
-        $app['authentication']->openAccount($auth, $oauth2_adapter->get_ses_id());
+        $app['authentication']->openAccount($user);
         $oauth2_adapter->remember_this_ses_id($app['session']->get('session_id'));
 
         return;
