@@ -82,7 +82,7 @@ class gatekeeper
         if (!is_null($parm['nolog']) && phrasea::guest_allowed($this->app)) {
             try {
                 $auth = new Session_Authentication_Guest($this->app);
-                $this->app->openAccount($auth);
+                $this->app['authentication']->openAccount($auth);
             } catch (Exception $e) {
                 $url = '/login/?redirect=' . $parm['redirect']
                     . '&error=' . urlencode($e->getMessage());
@@ -102,7 +102,7 @@ class gatekeeper
      */
     public function require_session()
     {
-        if ($this->app->isAuthenticated()) {
+        if ($this->app['authentication']->isAuthenticated()) {
             return true;
         }
         phrasea::headers(403);
