@@ -470,6 +470,49 @@
             "time": "2013-01-07 20:05:04"
         },
         {
+            "name": "facebook/php-sdk",
+            "version": "v3.2.1",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/facebook/facebook-php-sdk.git",
+                "reference": "v3.2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/facebook/facebook-php-sdk/archive/v3.2.1.zip",
+                "reference": "v3.2.1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.2.0"
+            },
+            "time": "2012-11-27 22:34:17",
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Facebook",
+                    "homepage": "https://github.com/facebook/facebook-php-sdk/contributors"
+                }
+            ],
+            "description": "Facebook PHP SDK",
+            "homepage": "https://github.com/facebook/facebook-php-sdk",
+            "keywords": [
+                "facebook",
+                "sdk"
+            ]
+        },
+        {
             "name": "gedmo/doctrine-extensions",
             "version": "v2.3.5",
             "source": {
@@ -883,6 +926,50 @@
                 "psr-3"
             ],
             "time": "2013-01-11 10:23:20"
+        },
+        {
+            "name": "neutron/recaptcha",
+            "version": "0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/romainneutron/ReCaptcha",
+                "reference": "0.1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/romainneutron/ReCaptcha/zipball/0.1.3",
+                "reference": "0.1.3",
+                "shasum": ""
+            },
+            "require": {
+                "guzzle/guzzle": ">=3.0,<4.0"
+            },
+            "require-dev": {
+                "silex/silex": "1.0.x-dev@dev",
+                "symfony/http-foundation": ">=2.0,<3.0"
+            },
+            "suggest": {
+                "symfony/http-foundation": "To bind symfony request to ReCaptcha"
+            },
+            "time": "2013-02-14 13:42:00",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Neutron": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Romain Neutron",
+                    "email": "imprec@gmail.com",
+                    "homepage": "http://www.lickmychip.com/"
+                }
+            ],
+            "description": "ReCaptcha Client"
         },
         {
             "name": "neutron/silex-badfaith-provider",
