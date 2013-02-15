@@ -159,7 +159,7 @@ class API_V1_adapterTest extends PhraseanetPHPUnitAuthenticatedAbstract
     public function testSearch_recordsWithRecords()
     {
         $auth = new \Session_Authentication_None(self::$DI['user']);
-        self::$DI['app']->openAccount($auth);
+        self::$DI['app']['authentication']->openAccount($auth);
 
         $record = \record_adapter::createFromFile(BorderFile::buildFromPathfile(__DIR__ . '/../../../files/cestlafete.jpg', self::$DI['collection'], self::$DI['app']), self::$DI['app']);
 
@@ -240,7 +240,7 @@ class API_V1_adapterTest extends PhraseanetPHPUnitAuthenticatedAbstract
     public function testSearch_recordsWithStories()
     {
         $auth = new \Session_Authentication_None(self::$DI['user']);
-        self::$DI['app']->openAccount($auth);
+        self::$DI['app']['authentication']->openAccount($auth);
 
         $story = \record_adapter::createStory(self::$DI['app'], self::$DI['collection']);
 
@@ -273,7 +273,7 @@ class API_V1_adapterTest extends PhraseanetPHPUnitAuthenticatedAbstract
     public function testSearchWithStories()
     {
         $auth = new \Session_Authentication_None(self::$DI['user']);
-        self::$DI['app']->openAccount($auth);
+        self::$DI['app']['authentication']->openAccount($auth);
 
         $story = \record_adapter::createStory(self::$DI['app'], self::$DI['collection']);
 
@@ -309,7 +309,7 @@ class API_V1_adapterTest extends PhraseanetPHPUnitAuthenticatedAbstract
     public function testSearchWithRecords()
     {
         $auth = new \Session_Authentication_None(self::$DI['user']);
-        self::$DI['app']->openAccount($auth);
+        self::$DI['app']['authentication']->openAccount($auth);
 
         $record = \record_adapter::createFromFile(BorderFile::buildFromPathfile(__DIR__ . '/../../../files/cestlafete.jpg', self::$DI['collection'], self::$DI['app']), self::$DI['app']);
 
@@ -562,7 +562,7 @@ class API_V1_adapterTest extends PhraseanetPHPUnitAuthenticatedAbstract
         $repo = $em->getRepository('\Entities\Basket');
 
         /* @var $repo \Repositories\BasketRepository */
-        $basket = $repo->findUserBasket(self::$DI['app'], $response['response']['basket']['basket_id'], self::$DI['app']['phraseanet.user'], true);
+        $basket = $repo->findUserBasket(self::$DI['app'], $response['response']['basket']['basket_id'], self::$DI['app']['authentication']->getUser(), true);
 
         $this->assertTrue($basket instanceof \Entities\Basket);
         $em->remove($basket);
@@ -571,7 +571,7 @@ class API_V1_adapterTest extends PhraseanetPHPUnitAuthenticatedAbstract
 
     public function testDelete_basket()
     {
-        $usr_id = self::$DI['app']['phraseanet.user']->get_id();
+        $usr_id = self::$DI['app']['authentication']->getUser()->get_id();
         $user = User_Adapter::getInstance($usr_id, self::$DI['app']);
 
         $em = self::$DI['app']['EM'];
@@ -603,7 +603,7 @@ class API_V1_adapterTest extends PhraseanetPHPUnitAuthenticatedAbstract
 
     public function testGet_basket()
     {
-        $usr_id = self::$DI['app']['phraseanet.user']->get_id();
+        $usr_id = self::$DI['app']['authentication']->getUser()->get_id();
 
         $basket = $this->insertOneBasket();
 
@@ -616,7 +616,7 @@ class API_V1_adapterTest extends PhraseanetPHPUnitAuthenticatedAbstract
 
     public function testSet_basket_title()
     {
-        $usr_id = self::$DI['app']['phraseanet.user']->get_id();
+        $usr_id = self::$DI['app']['authentication']->getUser()->get_id();
 
         $basket = $this->insertOneBasket();
 
@@ -635,7 +635,7 @@ class API_V1_adapterTest extends PhraseanetPHPUnitAuthenticatedAbstract
 
     public function testSet_basket_description()
     {
-        $usr_id = self::$DI['app']['phraseanet.user']->get_id();
+        $usr_id = self::$DI['app']['authentication']->getUser()->get_id();
 
         $basket = $this->insertOneBasket();
 
