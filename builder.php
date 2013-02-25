@@ -17,6 +17,12 @@ system(__DIR__ . '/composer.phar dump-autoload --optimize');
 
 chdir(__DIR__);
 
+system('bin/setup less:compile', $code);
+
+if (0 !== $code) {
+    exit('Failed to build less files');
+}
+
 set_time_limit(0);
 
 printf('Remove files ...' . PHP_EOL);
