@@ -13,7 +13,7 @@ printf('Retrieve vendors ...' . PHP_EOL);
 
 system('./vendors.php --no-dev');
 
-system(__DIR__ . '/composer.phar dump-autoload');
+system(__DIR__ . '/composer.phar dump-autoload --optimize');
 
 chdir(__DIR__);
 
