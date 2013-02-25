@@ -19,6 +19,7 @@ namespace KonsoleKommander;
 use Alchemy\Phrasea\Core\Version;
 use Alchemy\Phrasea\Command\UpgradeDBDatas;
 use Alchemy\Phrasea\Command\Setup\Install;
+use Alchemy\Phrasea\Command\Setup\LessCompile;
 use Alchemy\Phrasea\CLI;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -61,6 +62,7 @@ try {
 
     $app->command(new \module_console_systemConfigCheck('check:system'));
     $app->command(new Install('system:install'));
+    $app->command(new LessCompile('less:compile'));
 
     $result_code = is_int($app->run()) ? : 1;
 } catch (\Exception $e) {
