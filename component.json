@@ -9,6 +9,7 @@
     "angular-ui": "~0.4.0",
     "underscore": "~1.4.4",
     "modernizr": "~2.6.2",
-    "normalize-css" : "~2.1.0"
+    "normalize-css" : "~2.1.0",
+    "json3" : "3.2.4"
   }
 }
