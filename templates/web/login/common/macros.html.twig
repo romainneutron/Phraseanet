@@ -1,0 +1,143 @@
+{% macro fieldInput(field, form_name, icon_name, custom_attributes, validation_messages) %}
+    {% set input_name = field.vars.name %}
+
+    {% set validation_messages = {
+            "required_message" : "This field is required" |trans,
+            "is_valid_message" : "This field is not valid"|trans,
+            "validate_message" : "This field is not valid"|trans
+        }|merge(validation_messages|default({}))
+    %}
+
+    {% set attributes = custom_attributes|default({})|merge({
+            'class': app['browser'].getBrowser() == constant('Browser::BROWSER_IE') and app['browser'].getVersion() <= 7  ? '' : 'input-block-level',
+            'ng-model' : input_name,
+            'force-model-update' : ''
+        })
+    %}
+
+    {{ form_label(field) }}
+
+    <table class="input-table" ng-class="getInputClass('{{ input_name }}')">
+        <tr>
+            <td class="icon"><i class="{{ icon_name|default('icon-angle-right') }} icon-white"></i></td>
+            <td class="input">
+                {{  form_widget(field, { 'attr': attributes })}}
+            </td>
+        </tr>
+    </table>
+
+    {% if field.vars.required %}
+        <div ng-show="!{{ form_name }}.{{ input_name }}.errors.filled">
+            {{ _self.fieldError(validation_messages.required_message) }}
+        </div>
+    {% endif %}
+
+    <div ng-show="{{ form_name }}.{{ input_name }}.errors.filled && !{{ form_name }}.{{ input_name }}.errors.valid">
+        {{ _self.fieldError(validation_messages.is_valid_message) }}
+    </div>
+
+    {% if attributes['ui-validate'] is defined %}
+        <div ng-show="{{ form_name }}.{{ input_name }}.$error.validator">
+            {{ _self.fieldError(validation_messages.validate_message) }}
+        </div>
+    {% endif %}
+
+    {{ form_errors(field) }}
+{% endmacro %}
+
+{% macro checkboxInput (id, label, name, checked) %}
+    <div class="hidden-phone control-group">
+        <div class="controls">
+            <label for="{{ id }}" class="checkbox">
+                <input id="{{ id }}" name="{{ name }}" type="checkbox" {% if checked|default(null) %}checked{% endif %}> {{ label }}
+            </label>
+        </div>
+    </div>
+    <div class="visible-phone switch-control">
+        <ul class="unstyle inline">
+            <li>
+                <div class="switch switch-small">
+                    <input id="{{ id }}" name="{{ name }}" type="checkbox" {% if checked|default(null) %}checked{% endif %}>
+                </div>
+            </li>
+            <li> {{ label }} </li>
+        </ul>
+    </div>
+{% endmacro %}
+
+{% macro providerList() %}
+    <ul class="unstyled inline provider-list">
+        <li><a href="#"><img src="/skins/login/img/facebook.png" /></a></li>
+        <li><a href="#"><img src="/skins/login/img/twitter.png" /></a></li>
+        <li><a href="#"><img src="/skins/login/img/google.png" /></a></li>
+        <li><a href="#"><img src="/skins/login/img/linkedin.png" /></a></li>
+    </ul>
+{% endmacro %}
+
+{% macro fieldError(errors) %}
+    <div class="hidden-phone popover bottom field-error">
+        <div class="arrow"></div>
+        <div class="popover-content">
+            <table>
+                <tr>
+                    <td style="width:35px;"><i class="icon-warning-sign icon-white"></i></td>
+                        {% if errors|keys|length >= 1 %}
+                            {% for error in errors %}
+                                <td>
+                                    {{ error.message }}
+                                </td>
+                            {% endfor %}
+                        {% else %}
+                            <td>{{ errors}}</td>
+                        {% endif %}
+                    </tr>
+            </table>
+        </div>
+     </div>
+
+    <span class="visible-phone text-error help-block help-block-error">
+        {% if errors|keys|length >=  1 %}
+            {% for error in errors %}
+                {{ error.message }}
+            {% endfor %}
+        {% else %}
+            {{ errors }}
+        {% endif %}
+    </span>
+{% endmacro %}
+
+{% macro providerBadge(provider, img_url, full_name, email) %}
+    <div class="{{ provider }} no-overflow provider-badge rounded">
+        <table>
+            <tr>
+                <td style="width:55px;">
+                    <img src="{{ img_url }}"/>
+                </td>
+                <td>
+                    <ul class="unstyled">
+                        <li class="pseudo one-line"><b>{{ full_name }}</b></li>
+                        <li class="email one-line">{{ email }}</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+     </div>
+{% endmacro %}
+
+{% macro phraseanetBadge(full_name, email, company) %}
+    <div class="authentication-user-pres-phraseanet well">
+        <ul class="unstyled">
+            <li class="one-line"><i class="icon-user"></i>{{ full_name }}</li>
+            <li class="one-line"><i class="icon-envelope"></i>{{ email }}</li>
+            <li class="one-line"><i class="icon-briefcase"></i>{{ company }}</li>
+        </ul>
+    </div>
+{% endmacro %}
+
+{% macro alert() %}
+    {% for type, messages in ["warning", "info", "success", "error"] %}
+        {% for message in app.getFlash(type) %}
+            <phraseanet-alert type="{{ type }}">{{ message }}</phraseanet-alert>
+        {% endfor %}
+    {% endfor %}
+{% endmacro %}

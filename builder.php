@@ -13,9 +13,16 @@ printf('Retrieve vendors ...' . PHP_EOL);
 
 system('./vendors.php --no-dev');
 
-system(__DIR__ . '/composer.phar dump-autoload');
+system(__DIR__ . '/composer.phar dump-autoload --optimize');
 
 chdir(__DIR__);
+
+system('bin/setup less:compile', $code);
+
+if (0 !== $code) {
+    echo "Failed to build less files\n";
+    exit(1);
+}
 
 set_time_limit(0);
 
