@@ -1,5 +1,5 @@
 {
-    "hash": "8f2b881c935318b3645b39146acf6600",
+    "hash": "6b939ef229c39a1c83fef05db2d561f9",
     "packages": [
         {
             "name": "BadFaith/BadFaith",
@@ -12,7 +12,6 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-07-27 20:10:01",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -22,7 +21,8 @@
             "license": [
                 "MIT"
             ],
-            "description": "Accept-* Header parsing for PHP"
+            "description": "Accept-* Header parsing for PHP",
+            "time": "2012-07-27 20:10:01"
         },
         {
             "name": "alchemy/Phlickr",
@@ -32,13 +32,13 @@
                 "url": "https://github.com/alchemy-fr/Phlickr",
                 "reference": "89993abd6a02b42e0b765114c34c26c4056762fa"
             },
-            "time": "2012-04-13 17:43:31",
             "type": "library",
             "autoload": {
                 "psr-0": {
                     "Phlickr_": "./"
                 }
-            }
+            },
+            "time": "2012-04-13 17:43:31"
         },
         {
             "name": "alchemy/ghostscript",
@@ -63,7 +63,6 @@
                 "sami/sami": "dev-master",
                 "silex/silex": "1.0.x-dev@dev"
             },
-            "time": "2013-02-01 08:51:59",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -95,7 +94,8 @@
             "keywords": [
                 "ghostscript",
                 "pdf"
-            ]
+            ],
+            "time": "2013-02-01 08:51:59"
         },
         {
             "name": "alchemy/oauth2php",
@@ -105,29 +105,28 @@
                 "url": "https://github.com/alchemy-fr/oauth2-php",
                 "reference": "5f949209461e8f4c31e8476155188923aafa2ae5"
             },
-            "time": "2012-03-30 15:47:07",
             "type": "library",
             "autoload": {
                 "classmap": [
                     "lib/"
                 ]
-            }
+            },
+            "time": "2012-03-30 15:47:07"
         },
         {
             "name": "dailymotion/sdk",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/dailymotion/dailymotion-sdk-php",
-                "reference": "a11e98742adf877497017fece69f603af578f329"
+                "url": "https://github.com/dailymotion/dailymotion-sdk-php.git",
+                "reference": "1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dailymotion/dailymotion-sdk-php/zipball/a11e98742adf877497017fece69f603af578f329",
-                "reference": "a11e98742adf877497017fece69f603af578f329",
+                "url": "https://api.github.com/repos/dailymotion/dailymotion-sdk-php/zipball/1.4",
+                "reference": "1.4",
                 "shasum": ""
             },
-            "time": "2012-10-25 10:52:56",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -141,7 +140,8 @@
                 "api",
                 "dailymotion",
                 "sdk"
-            ]
+            ],
+            "time": "2012-10-25 10:52:56"
         },
         {
             "name": "data-uri/data-uri",
@@ -164,7 +164,6 @@
             "require-dev": {
                 "sami/sami": "dev-master"
             },
-            "time": "2013-02-11 11:12:52",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -186,7 +185,8 @@
                 "data",
                 "data-uri",
                 "uri"
-            ]
+            ],
+            "time": "2013-02-11 11:12:52"
         },
         {
             "name": "doctrine/collections",
@@ -205,7 +205,6 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "2013-01-12 16:36:50",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -248,7 +247,8 @@
                 "array",
                 "collections",
                 "iterator"
-            ]
+            ],
+            "time": "2013-01-12 16:36:50"
         },
         {
             "name": "doctrine/common",
@@ -267,7 +267,6 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "2012-09-19 22:55:18",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -317,7 +316,8 @@
                 "eventmanager",
                 "persistence",
                 "spl"
-            ]
+            ],
+            "time": "2012-09-19 22:55:18"
         },
         {
             "name": "doctrine/dbal",
@@ -337,7 +337,6 @@
                 "doctrine/common": "2.3.*",
                 "php": ">=5.3.2"
             },
-            "time": "2013-01-07 20:03:43",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -380,7 +379,8 @@
                 "dbal",
                 "persistence",
                 "queryobject"
-            ]
+            ],
+            "time": "2013-01-07 20:03:43"
         },
         {
             "name": "doctrine/orm",
@@ -405,7 +405,6 @@
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
-            "time": "2013-01-07 20:05:04",
             "bin": [
                 "bin/doctrine",
                 "bin/doctrine.php"
@@ -450,20 +449,21 @@
             "keywords": [
                 "database",
                 "orm"
-            ]
+            ],
+            "time": "2013-01-07 20:05:04"
         },
         {
             "name": "facebook/php-sdk",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
-                "url": "git://github.com/facebook/facebook-php-sdk.git",
-                "reference": "v3.2.1"
+                "url": "https://github.com/facebook/facebook-php-sdk.git",
+                "reference": "v3.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/facebook/facebook-php-sdk/archive/v3.2.1.zip",
-                "reference": "v3.2.1",
+                "url": "https://api.github.com/repos/facebook/facebook-php-sdk/zipball/v3.2.2",
+                "reference": "v3.2.2",
                 "shasum": ""
             },
             "require": {
@@ -471,7 +471,6 @@
                 "ext-json": "*",
                 "php": ">=5.2.0"
             },
-            "time": "2012-11-27 22:34:17",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -493,7 +492,8 @@
             "keywords": [
                 "facebook",
                 "sdk"
-            ]
+            ],
+            "time": "2013-01-15 21:37:15"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -526,7 +526,6 @@
                 "doctrine/mongodb-odm": ">=1.0.0-BETA7",
                 "doctrine/orm": ">=2.3.2"
             },
-            "time": "2013-02-05 13:39:54",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -572,7 +571,8 @@
                 "translatable",
                 "tree",
                 "uploadable"
-            ]
+            ],
+            "time": "2013-02-05 13:39:54"
         },
         {
             "name": "grom/silex-service-provider",
@@ -593,7 +593,6 @@
                 "knplabs/knp-snappy": "dev-master",
                 "silex/silex": ">=1.0.0-dev"
             },
-            "time": "2012-06-03 01:27:23",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -618,7 +617,8 @@
                 "pdf",
                 "silex",
                 "snappy"
-            ]
+            ],
+            "time": "2012-06-03 01:27:23"
         },
         {
             "name": "guzzle/guzzle",
@@ -672,7 +672,6 @@
                 "zendframework/zend-cache": "2.0.*",
                 "zendframework/zend-log": "2.0.*"
             },
-            "time": "2013-02-15 01:33:10",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -710,7 +709,8 @@
                 "http client",
                 "rest",
                 "web service"
-            ]
+            ],
+            "time": "2013-02-15 01:33:10"
         },
         {
             "name": "imagine/Imagine",
@@ -732,7 +732,6 @@
             "require-dev": {
                 "sami/sami": "dev-master"
             },
-            "time": "2012-12-13 18:31:18",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -757,7 +756,8 @@
                 "graphics",
                 "image manipulation",
                 "image processing"
-            ]
+            ],
+            "time": "2012-12-13 18:31:18"
         },
         {
             "name": "knplabs/knp-snappy",
@@ -781,7 +781,6 @@
                 "google/wkhtmltopdf-i386": "Provide wkhtmltopdf-i386 binary, use version `0.11.0-RC1` as dependency",
                 "symfony/process": "Process Component of Symfony2."
             },
-            "time": "2013-02-14 10:09:15",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -811,7 +810,8 @@
                 "snapshot",
                 "thumbnail",
                 "wkhtmltopdf"
-            ]
+            ],
+            "time": "2013-02-14 10:09:15"
         },
         {
             "name": "media-alchemyst/media-alchemyst",
@@ -847,7 +847,6 @@
                 "phpexiftool/phpexiftool": ">=0.1,<0.2",
                 "silex/silex": "1.0.x-dev@dev"
             },
-            "time": "2013-02-01 09:01:09",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -878,7 +877,8 @@
                 "image processing",
                 "video",
                 "video processing"
-            ]
+            ],
+            "time": "2013-02-01 09:01:09"
         },
         {
             "name": "mediavorus/mediavorus",
@@ -914,7 +914,6 @@
                 "jms/serializer": "To serialize Medias",
                 "symfony/yaml": "To serialize Medias in Yaml format"
             },
-            "time": "2013-01-31 10:28:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -940,7 +939,8 @@
             "description": "MediaVorus",
             "keywords": [
                 "metadata"
-            ]
+            ],
+            "time": "2013-01-31 10:28:20"
         },
         {
             "name": "monolog/monolog",
@@ -972,7 +972,6 @@
                 "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
                 "raven/raven": "Allow sending log messages to a Sentry server"
             },
-            "time": "2013-01-11 10:23:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1002,7 +1001,8 @@
                 "log",
                 "logging",
                 "psr-3"
-            ]
+            ],
+            "time": "2013-01-11 10:23:20"
         },
         {
             "name": "neutron/recaptcha",
@@ -1028,7 +1028,6 @@
             "suggest": {
                 "symfony/http-foundation": "To bind symfony request to ReCaptcha"
             },
-            "time": "2013-02-14 13:42:00",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1046,7 +1045,8 @@
                     "homepage": "http://www.lickmychip.com/"
                 }
             ],
-            "description": "ReCaptcha Client"
+            "description": "ReCaptcha Client",
+            "time": "2013-02-14 13:42:00"
         },
         {
             "name": "neutron/silex-badfaith-provider",
@@ -1071,7 +1071,6 @@
             "require-dev": {
                 "fabpot/php-cs-fixer": "master"
             },
-            "time": "2012-12-19 23:40:50",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1092,7 +1091,8 @@
             "description": "A provider to BadFaith content negociation library",
             "keywords": [
                 "content negociation"
-            ]
+            ],
+            "time": "2012-12-19 23:40:50"
         },
         {
             "name": "neutron/silex-filesystem-provider",
@@ -1113,7 +1113,6 @@
                 "silex/silex": ">=1.0",
                 "symfony/filesystem": ">=2.0"
             },
-            "time": "2012-11-08 21:07:08",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1136,7 +1135,8 @@
                 "filesystem",
                 "silex",
                 "temporary-filesystem"
-            ]
+            ],
+            "time": "2012-11-08 21:07:08"
         },
         {
             "name": "neutron/sphinxsearch-api",
@@ -1155,7 +1155,6 @@
             "require": {
                 "php": ">=4"
             },
-            "time": "2012-10-23 02:05:12",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1178,7 +1177,8 @@
                 "Sphinx Search",
                 "api",
                 "search-engine"
-            ]
+            ],
+            "time": "2012-10-23 02:05:12"
         },
         {
             "name": "php-ffmpeg/php-ffmpeg",
@@ -1206,7 +1206,6 @@
             "suggest": {
                 "php-ffmpeg/extras": "A compilation of common audio & video drivers for PHP-FFMpeg"
             },
-            "time": "2013-02-11 11:24:37",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1239,7 +1238,8 @@
                 "ffprobe",
                 "video",
                 "video processing"
-            ]
+            ],
+            "time": "2013-02-11 11:24:37"
         },
         {
             "name": "php-mp4box/php-mp4box",
@@ -1263,7 +1263,6 @@
             "require-dev": {
                 "silex/silex": "1.0.x-dev@dev"
             },
-            "time": "2013-02-11 11:30:00",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1286,7 +1285,8 @@
                     "homepage": "http://www.phraseanet.com/"
                 }
             ],
-            "description": "PHP MP4Box, an Object Oriented library for easy file conversion with MP4 Box"
+            "description": "PHP MP4Box, an Object Oriented library for easy file conversion with MP4 Box",
+            "time": "2013-02-11 11:30:00"
         },
         {
             "name": "php-unoconv/php-unoconv",
@@ -1310,7 +1310,6 @@
             "require-dev": {
                 "silex/silex": "1.0.x-dev@dev"
             },
-            "time": "2013-02-11 11:38:30",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1336,7 +1335,8 @@
             "description": "Unoconv PHP, an Object Oriented library for easy file conversion with LibreOffice's unoconv",
             "keywords": [
                 "unoconv"
-            ]
+            ],
+            "time": "2013-02-11 11:38:30"
         },
         {
             "name": "php-xpdf/php-xpdf",
@@ -1361,7 +1361,6 @@
                 "sami/sami": "dev-master@dev",
                 "silex/silex": "1.0.x@dev"
             },
-            "time": "2013-01-31 11:08:08",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1388,7 +1387,8 @@
             "keywords": [
                 "pdf",
                 "xpdf"
-            ]
+            ],
+            "time": "2013-01-31 11:08:08"
         },
         {
             "name": "phpexiftool/exiftool",
@@ -1407,7 +1407,6 @@
             "require": {
                 "phpexiftool/phpexiftool": "*"
             },
-            "time": "2013-01-30 18:48:32",
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1424,7 +1423,8 @@
             "keywords": [
                 "exiftool",
                 "metadatas"
-            ]
+            ],
+            "time": "2013-01-30 18:48:32"
         },
         {
             "name": "phpexiftool/phpexiftool",
@@ -1456,7 +1456,6 @@
                 "symfony/dom-crawler": ">=2.0,<=2.2.x-dev",
                 "symfony/finder": ">=2.0,<=2.2.x-dev"
             },
-            "time": "2013-01-30 16:44:06",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1478,7 +1477,8 @@
             "keywords": [
                 "exiftool",
                 "metadata"
-            ]
+            ],
+            "time": "2013-01-30 16:44:06"
         },
         {
             "name": "pimple/pimple",
@@ -1497,7 +1497,6 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-11-11 08:32:34",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1524,7 +1523,8 @@
             "keywords": [
                 "container",
                 "dependency injection"
-            ]
+            ],
+            "time": "2012-11-11 08:32:34"
         },
         {
             "name": "psr/log",
@@ -1540,7 +1540,6 @@
                 "reference": "1.0.0",
                 "shasum": ""
             },
-            "time": "2012-12-21 11:40:51",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1562,20 +1561,21 @@
                 "log",
                 "psr",
                 "psr-3"
-            ]
+            ],
+            "time": "2012-12-21 11:40:51"
         },
         {
             "name": "silex/silex",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git://github.com/fabpot/Silex.git",
-                "reference": "c421eab3c4ca9d106cc5b68266d58adece8636cd"
+                "url": "https://github.com/fabpot/Silex.git",
+                "reference": "9705ba7d5dd709262c451854f4e18f8c58171dfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Silex/zipball/c421eab3c4ca9d106cc5b68266d58adece8636cd",
-                "reference": "c421eab3c4ca9d106cc5b68266d58adece8636cd",
+                "url": "https://api.github.com/repos/fabpot/Silex/zipball/9705ba7d5dd709262c451854f4e18f8c58171dfa",
+                "reference": "9705ba7d5dd709262c451854f4e18f8c58171dfa",
                 "shasum": ""
             },
             "require": {
@@ -1611,7 +1611,6 @@
                 "symfony/css-selector": ">=2.1,<2.3-dev",
                 "symfony/dom-crawler": ">=2.1,<2.3-dev"
             },
-            "time": "2013-02-13 11:44:19",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1642,7 +1641,8 @@
             "homepage": "http://silex.sensiolabs.org",
             "keywords": [
                 "microframework"
-            ]
+            ],
+            "time": "2013-02-26 12:56:45"
         },
         {
             "name": "silex/web-profiler",
@@ -1651,20 +1651,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/Silex-WebProfiler.git",
-                "reference": "917c0d7576bfad8d85c148feb45e4b82aad569f0"
+                "reference": "d23a571f4b370aa040e2de7db24bf203b4745148"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/Silex-WebProfiler/zipball/917c0d7576bfad8d85c148feb45e4b82aad569f0",
-                "reference": "917c0d7576bfad8d85c148feb45e4b82aad569f0",
+                "url": "https://api.github.com/repos/sensiolabs/Silex-WebProfiler/zipball/d23a571f4b370aa040e2de7db24bf203b4745148",
+                "reference": "d23a571f4b370aa040e2de7db24bf203b4745148",
                 "shasum": ""
             },
             "require": {
                 "silex/silex": ">=1.0,<2.0",
-                "symfony/stopwatch": ">=2.2,<3.0",
-                "symfony/web-profiler-bundle": ">=2.2,<3.0"
+                "symfony/stopwatch": ">=2.2-RC1,<3.0",
+                "symfony/web-profiler-bundle": ">=2.2-RC1,<3.0"
             },
-            "time": "2013-02-15 07:30:30",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1687,7 +1686,8 @@
                 }
             ],
             "description": "A WebProfiler for Silex",
-            "homepage": "http://silex.sensiolabs.org/"
+            "homepage": "http://silex.sensiolabs.org/",
+            "time": "2013-02-19 15:30:35"
         },
         {
             "name": "swftools/swftools",
@@ -1712,7 +1712,6 @@
                 "sami/sami": "dev-master@dev",
                 "silex/silex": "1.0.x-dev@dev"
             },
-            "time": "2013-02-11 11:46:21",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1740,7 +1739,8 @@
                 "adobe flash",
                 "flash",
                 "swf"
-            ]
+            ],
+            "time": "2013-02-11 11:46:21"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1759,7 +1759,6 @@
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2013-01-08 15:50:34",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1789,7 +1788,8 @@
             "keywords": [
                 "mail",
                 "mailer"
-            ]
+            ],
+            "time": "2013-01-08 15:50:34"
         },
         {
             "name": "symfony/symfony",
@@ -1854,7 +1854,6 @@
                 "monolog/monolog": ">=1.3,<2.0",
                 "propel/propel1": "1.6.*"
             },
-            "time": "2013-02-15 09:56:14",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1888,7 +1887,8 @@
             "homepage": "http://symfony.com",
             "keywords": [
                 "framework"
-            ]
+            ],
+            "time": "2013-02-15 09:56:14"
         },
         {
             "name": "tecnick.com/tcpdf",
@@ -1896,12 +1896,11 @@
             "source": {
                 "type": "git",
                 "url": "git://git.code.sf.net/p/tcpdf/code",
-                "reference": "6b317b4e2e46b5412b72fb17a4bc36ff4c8a174c"
+                "reference": "a77a36e8bb7c2ff27e9c077e3d34b71f08990092"
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2013-02-06 20:04:08",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -1943,26 +1942,26 @@
                 "pdf",
                 "pdf417",
                 "qrcode"
-            ]
+            ],
+            "time": "2013-02-22 18:52:06"
         },
         {
             "name": "twig/extensions",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fabpot/Twig-extensions",
-                "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf"
+                "url": "https://github.com/fabpot/Twig-extensions.git",
+                "reference": "921799aaf05f88af749d72912d6b154dfeb9a03e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/5c2d515d4624bdd588226d688173cf0399a4d8cf",
-                "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf",
+                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/921799aaf05f88af749d72912d6b154dfeb9a03e",
+                "reference": "921799aaf05f88af749d72912d6b154dfeb9a03e",
                 "shasum": ""
             },
             "require": {
                 "twig/twig": "1.*"
             },
-            "time": "2013-01-04 16:55:05",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1990,7 +1989,8 @@
                 "debug",
                 "i18n",
                 "text"
-            ]
+            ],
+            "time": "2013-02-28 14:21:30"
         },
         {
             "name": "twig/twig",
@@ -2009,7 +2009,6 @@
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2013-02-09 18:21:53",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2039,7 +2038,8 @@
             "homepage": "http://twig.sensiolabs.org",
             "keywords": [
                 "templating"
-            ]
+            ],
+            "time": "2013-02-09 18:21:53"
         },
         {
             "name": "zend/gdata",
@@ -2058,7 +2058,6 @@
             "require": {
                 "php": ">5.2.4"
             },
-            "time": "2013-01-30 15:31:21",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -2080,7 +2079,8 @@
             "keywords": [
                 "gdata",
                 "zend"
-            ]
+            ],
+            "time": "2013-01-30 15:31:21"
         }
     ],
     "packages-dev": [
@@ -2110,7 +2110,6 @@
                 "doctrine/orm": "For loading ORM fixtures",
                 "doctrine/phpcr-odm": "For loading PHPCR ODM fixtures"
             },
-            "time": "2013-02-12 02:52:36",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2137,7 +2136,8 @@
             "homepage": "http://www.doctrine-project.org",
             "keywords": [
                 "database"
-            ]
+            ],
+            "time": "2013-02-12 02:52:36"
         }
     ],
     "aliases": [
@@ -2157,7 +2157,6 @@
         "phpexiftool/exiftool": 20,
         "silex/silex": 20,
         "silex/web-profiler": 20,
-        "symfony/symfony": 20,
         "tecnick.com/tcpdf": 20,
         "twig/extensions": 20,
         "doctrine/data-fixtures": 20
