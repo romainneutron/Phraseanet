@@ -84,6 +84,9 @@ $finder
     ->name('.svn')
     ->name('.git')
     ->name('flash')
+    ->name('angular-mocks')
+    ->name('angular-scenario')
+    ->name('qunit')
     ->ignoreDotFiles(false)
     ->ignoreVCS(false)
     ->in(__DIR__);
