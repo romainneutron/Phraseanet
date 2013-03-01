@@ -64,7 +64,7 @@ $groups = array(
         , '//include/jslibs/jquery-ui-1.8.17/jquery-ui-i18n.js'
         , '//include/jslibs/jquery.cookie.js'
         , '//include/jquery.common.js'
-        , '//include/vendor/humane-js/humane.js'
+        , '//assets/humane-js/humane.js'
         , '//include/vendor/mustache-js/mustache.js'
         , '//include/vendor/javascript-load-image/load-image.js'
         , '//include/vendor/jquery-file-upload/js/vendor/jquery.ui.widget.js'
