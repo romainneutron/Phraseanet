@@ -50,7 +50,7 @@ $groups = array(
         , '//include/jslibs/jquery.multiselect.js'
         , '//include/jslibs/jquery.cluetip.js'
         , '//include/jquery.nicoslider.js'
-        , '//report/report.js'
+        , '//skins/report/report.js'
     ),
     'modalBox' => array(
          '//include/jslibs/jquery-ui-1.8.17/jquery-ui-i18n.js'
