@@ -1,5 +1,5 @@
 {
-    "hash": "6b939ef229c39a1c83fef05db2d561f9",
+    "hash": "22ea73b30751ea9bce457cb930fb5801",
     "packages": [
         {
             "name": "BadFaith/BadFaith",
@@ -145,7 +145,7 @@
         },
         {
             "name": "data-uri/data-uri",
-            "version": "dev-master",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "git://github.com/alchemy-fr/PHP-dataURI.git",
@@ -764,7 +764,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git://github.com/KnpLabs/snappy.git",
+                "url": "https://github.com/KnpLabs/snappy.git",
                 "reference": "39c64d910d25823b82ac426eb12a6275a66a75d0"
             },
             "dist": {
@@ -1053,7 +1053,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/romainneutron/BadFaith-ServiceProvider",
+                "url": "https://github.com/romainneutron/BadFaith-ServiceProvider.git",
                 "reference": "5bc683cea2996fe5fda6f72b1f9c83299a381336"
             },
             "dist": {
@@ -1099,7 +1099,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/romainneutron/Silex-Filesystem-Service-Provider",
+                "url": "https://github.com/romainneutron/Silex-Filesystem-Service-Provider.git",
                 "reference": "98771524bba1ffa58373c4c06d438f5fb5442ff4"
             },
             "dist": {
@@ -1395,7 +1395,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/alchemy-fr/exiftool",
+                "url": "https://github.com/alchemy-fr/exiftool.git",
                 "reference": "9.15"
             },
             "dist": {
@@ -1793,16 +1793,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "2.2.x-dev",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "83fc5ed98f26ffbf5b8852950e7bb80f824b4e53"
+                "reference": "v2.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/83fc5ed98f26ffbf5b8852950e7bb80f824b4e53",
-                "reference": "83fc5ed98f26ffbf5b8852950e7bb80f824b4e53",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.2.0",
+                "reference": "v2.2.0",
                 "shasum": ""
             },
             "require": {
@@ -1888,7 +1888,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-02-15 09:56:14"
+            "time": "2013-03-01 06:52:29"
         },
         {
             "name": "tecnick.com/tcpdf",
@@ -2149,7 +2149,6 @@
         "alchemy/phlickr": 20,
         "badfaith/badfaith": 20,
         "dailymotion/sdk": 20,
-        "data-uri/data-uri": 20,
         "grom/silex-service-provider": 20,
         "knplabs/knp-snappy": 20,
         "neutron/silex-badfaith-provider": 20,
