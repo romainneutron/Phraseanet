@@ -16,6 +16,7 @@
     "bootstrap-switch": "git@github.com:nostalgiaz/bootstrap-switch.git",
     "humane-js": "~3.0.6",
     "qunit": "~1.11.0",
-    "mustache": "~0.7.2"
+    "mustache": "~0.7.2",
+    "jquery-file-upload": "~7.2.1"
   }
 }
