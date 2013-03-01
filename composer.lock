@@ -157,7 +157,7 @@
         },
         {
             "name": "data-uri/data-uri",
-            "version": "dev-master",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "git://github.com/alchemy-fr/PHP-dataURI.git",
@@ -2076,7 +2076,6 @@
         "alchemy/phlickr": 20,
         "badfaith/badfaith": 20,
         "dailymotion/sdk": 20,
-        "data-uri/data-uri": 20,
         "grom/silex-service-provider": 20,
         "imagine/imagine": 20,
         "knplabs/knp-snappy": 20,
