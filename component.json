@@ -15,6 +15,7 @@
     "json3": "~3.2.4",
     "bootstrap-switch": "git@github.com:nostalgiaz/bootstrap-switch.git",
     "humane-js": "~3.0.6",
-    "qunit": "~1.11.0"
+    "qunit": "~1.11.0",
+    "mustache": "~0.7.2"
   }
 }
