@@ -54,4 +54,6 @@ php:
   - 5.4
   - 5.5
 
-script: sh tests/js/scripts/run.sh --single-run && phpunit
+script:
+  - sh tests/js/scripts/run.sh --single-run
+  - phpunit
