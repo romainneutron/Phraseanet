@@ -7,6 +7,8 @@ before_script:
   - rm -f config/services.yml config/connexions.yml config/config.yml config/config.inc config/connexion.inc config/_GV.php config/_GV.php.old
   - cp -f hudson/connexion.inc config/
   - cp -f hudson/_GV.php config/
+  - npm install bower testacular -g
+  - bower install
   - composer self-update
   - composer install --dev --prefer-source
   - sudo apt-get update
@@ -51,3 +53,7 @@ php:
   - 5.3
   - 5.4
   - 5.5
+
+script:
+  - sh tests/js/scripts/run.sh --single-run
+  - phpunit
