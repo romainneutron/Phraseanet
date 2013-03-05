@@ -99,6 +99,7 @@ use Neutron\Silex\Provider\FilesystemServiceProvider;
 use Neutron\ReCaptcha\ReCaptchaServiceProvider;
 use PHPExiftool\PHPExiftoolServiceProvider;
 use Silex\Application as SilexApplication;
+use Silex\Provider\FormServiceProvider;
 use Silex\Provider\MonologServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\TwigServiceProvider;
@@ -118,6 +119,11 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGenerator;
+use Symfony\Component\Form\FormFactory;
+use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\Exception\FormException;
 
 class Application extends SilexApplication
 {
@@ -229,6 +235,7 @@ class Application extends SilexApplication
                 'cache'           => realpath(__DIR__ . '/../../../../../../tmp/cache_twig/'),
             )
         ));
+        $this->register(new FormServiceProvider());
 
         $this->setupTwig();
         $this->register(new UnoconvServiceProvider());
@@ -358,6 +365,25 @@ class Application extends SilexApplication
 
             return $data[1];
         };
+    }
+
+    /**
+     * Returns a form.
+     *
+     * @see FormFactory::create()
+     *
+     * @param string|FormTypeInterface $type    The type of the form
+     * @param mixed                    $data    The initial data
+     * @param array                    $options The options
+     * @param FormBuilderInterface     $parent  The parent builder
+     *
+     * @return FormInterface The form named after the type
+     *
+     * @throws FormException if any given option is not applicable to the given type
+     */
+    public function form($type = 'form', $data = null, array $options = array(), FormBuilderInterface $parent = null)
+    {
+        return $this['form.factory']->create($type, $data, $options, $parent);
     }
 
     /**
