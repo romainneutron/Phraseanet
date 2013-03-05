@@ -22,7 +22,7 @@ use Alchemy\Phrasea\Controller\Admin\Databoxes;
 use Alchemy\Phrasea\Controller\Admin\Description;
 use Alchemy\Phrasea\Controller\Admin\Fields;
 use Alchemy\Phrasea\Controller\Admin\Publications;
-use Alchemy\Phrasea\Controller\Admin\Root;
+use Alchemy\Phrasea\Controller\Admin\Root as AdminRoot;
 use Alchemy\Phrasea\Controller\Admin\Setup;
 use Alchemy\Phrasea\Controller\Admin\SearchEngine;
 use Alchemy\Phrasea\Controller\Admin\Subdefs;
@@ -63,6 +63,7 @@ use Alchemy\Phrasea\Controller\Report\Root as ReportRoot;
 use Alchemy\Phrasea\Controller\Root\Account;
 use Alchemy\Phrasea\Controller\Root\Developers;
 use Alchemy\Phrasea\Controller\Root\Login;
+use Alchemy\Phrasea\Controller\Root\Root;
 use Alchemy\Phrasea\Controller\Root\RSSFeeds;
 use Alchemy\Phrasea\Controller\Root\Session;
 use Alchemy\Phrasea\Controller\Thesaurus\Thesaurus;
@@ -336,6 +337,7 @@ class Application extends SilexApplication
         );
 
         $this['dispatcher']->addListener(KernelEvents::REQUEST, array($this, 'addLocale'), 255);
+        $this['dispatcher']->addListener(KernelEvents::REQUEST, array($this, 'setLocale'), -255);
         $this['dispatcher']->addListener(KernelEvents::REQUEST, array($this, 'initSession'), 254);
         $this['dispatcher']->addListener(KernelEvents::RESPONSE, array($this, 'addUTF8Charset'), -128);
         $this['dispatcher']->addListener(KernelEvents::RESPONSE, array($this, 'disableCookiesIfRequired'), -256);
@@ -435,6 +437,11 @@ class Application extends SilexApplication
         $event->setResponse($response);
     }
 
+    public function setLocale(GetResponseEvent $event)
+    {
+        $this['locale'] = $this['phraseanet.locale'];
+    }
+
     public function addLocale(GetResponseEvent $event)
     {
         /**
@@ -449,7 +456,7 @@ class Application extends SilexApplication
             )
         );
 
-        $this['locale'] = $this->share(function(Application $app) use ($event) {
+        $this['locale'] = $this['phraseanet.locale'] = $this->share(function(Application $app) use ($event) {
             $event->getRequest()->setDefaultLocale(
                 $app['phraseanet.registry']->get('GV_default_lng', 'en_GB')
             );
@@ -570,27 +577,7 @@ class Application extends SilexApplication
 
     public function bindRoutes()
     {
-        $this->get('/', function(Application $app) {
-            if ($app['browser']->isMobile()) {
-                return $app->redirect("/login/?redirect=lightbox");
-            } elseif ($app['browser']->isNewGeneration()) {
-                return $app->redirect("/login/?redirect=prod");
-            } else {
-                return $app->redirect("/login/?redirect=client");
-            }
-        })->bind('root');
-
-        $this->get('/robots.txt', function(Application $app) {
-
-            if ($app['phraseanet.registry']->get('GV_allow_search_engine') === true) {
-                $buffer = "User-Agent: *\n" . "Allow: /\n";
-            } else {
-                $buffer = "User-Agent: *\n" . "Disallow: /\n";
-            }
-
-            return new Response($buffer, 200, array('Content-Type' => 'text/plain'));
-        })->bind('robots');
-
+        $this->mount('/', new Root());
         $this->mount('/feeds/', new RSSFeeds());
         $this->mount('/account/', new Account());
         $this->mount('/login/', new Login());
@@ -600,7 +587,7 @@ class Application extends SilexApplication
         $this->mount('/datafiles/', new Datafiles());
         $this->mount('/permalink/', new Permalink());
 
-        $this->mount('/admin/', new Root());
+        $this->mount('/admin/', new AdminRoot());
         $this->mount('/admin/dashboard', new Dashboard());
         $this->mount('/admin/collection', new Collection());
         $this->mount('/admin/databox', new Databox());
