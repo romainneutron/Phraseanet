@@ -15,34 +15,23 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class PhraseaAuthenticationForm extends AbstractType
+class PhraseaRenewPasswordForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('login', 'text', array(
-            'label' => _('Login'),
-            'required' => true,
-            'disabled' => $options['disabled'],
-            'constraints' => array(
-                new Assert\NotBlank(),
-            ),
-        ));
-
         $builder->add('password', 'password', array(
             'label' => _('Password'),
             'required' => true,
-            'disabled' => $options['disabled'],
             'constraints' => array(
-                new Assert\NotBlank(),
-            ),
+                new Assert\NotBlank()
+            )
         ));
 
-        $builder->add('remember-me', 'checkbox', array(
-            'label' => _('Remember me'),
-            'mapped'   => false,
-            'required' => false,
-            'attr'     => array(
-                'checked' => 'checked'
+        $builder->add('passwordConfirm', 'password', array(
+            'label' => _('Password'),
+            'required' => true,
+            'constraints' => array(
+                new Assert\NotBlank()
             )
         ));
     }
