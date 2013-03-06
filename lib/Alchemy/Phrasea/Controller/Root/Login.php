@@ -25,6 +25,8 @@ use Alchemy\Phrasea\Notification\Mail\MailSuccessEmailConfirmationUnregistered;
 use Alchemy\Phrasea\Authentication\Exception\RequireCaptchaException;
 use Alchemy\Phrasea\Authentication\Exception\AccountLockedException;
 use Alchemy\Phrasea\Form\Login\PhraseaAuthenticationForm;
+use Alchemy\Phrasea\Form\Login\PhraseaForgotPasswordForm;
+use Alchemy\Phrasea\Form\Login\PhraseaRenewPasswordForm;
 use Silex\Application;
 use Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -286,6 +288,19 @@ class Login implements ControllerProviderInterface
         })->bind('login_cgus');
 
         /**
+         *
+         */
+        $controllers->get('/renew-password', function(PhraseaApplication $app, Request $request) {
+            $form = $app->form(new PhraseaRenewPasswordForm());
+
+            return $app['twig']->render('login/change-password.html.twig', array(
+                'form' => $form->createView(),
+                'login' => new \login(),
+            ));
+
+        })->bind('login_renew_password');
+
+        /**
          * Register classic form
          */
         $controllers->get('/register-classic', function(PhraseaApplication $app, Request $request) {
@@ -521,17 +536,7 @@ class Login implements ControllerProviderInterface
             }
         }
 
-        $form = $app['form.factory']->createNamedBuilder('loginForm', 'form')
-            ->add('email', 'email', array(
-                'label' => _('E-mail'),
-                'required' => true,
-                'disabled' => $app['phraseanet.registry']->get('GV_maintenance'),
-                'constraints' => array(
-                    new Assert\NotBlank(),
-                    new Assert\Email(),
-                ),
-            ))
-            ->getForm();
+        $form = $app->form(new PhraseaForgotPasswordForm());
 
         return $app['twig']->render('login/forgot-password.html.twig', array(
             'login'       => new \login(),
