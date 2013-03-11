@@ -33,13 +33,13 @@
             <div class="span12">
                 {{ auth_macro.flashes() }}
                 <form
-                     ng-controller="LoginFormController"
+                     data-ng-controller="LoginFormController"
                      novalidate
                      name="loginForm"
-                     ng-submit="submit();"
+                     data-ng-submit="submit();"
                      method="POST"
                      action="{{ path("login_authenticate") }}"
-                     check-form-submission
+                     data-check-form-submission
                 >
                     <div class="row-fluid">
                         <div class="span12">
