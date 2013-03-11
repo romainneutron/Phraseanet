@@ -72,16 +72,16 @@
 {% macro providerList() %}
     <ul class="unstyled inline provider-list">
         <li>
-            <a href="{{ path('login_authentication_provider_authenticate', { 'providerId' : 'facebook' } ) }}"><img src="/skins/login/img/facebook.png" /></a>
+            <a href="{{ path('login_authentication_provider_authenticate', { 'providerId' : 'facebook' } ) }}"><img src="/skins/login/img/facebook.png" alt="facebook"/></a>
         </li>
         <li>
-            <a href="#"><img src="/skins/login/img/twitter.png" /></a>
+            <a href="#"><img src="/skins/login/img/twitter.png" alt="twitter"/></a>
         </li>
         <li
-            ><a href="#"><img src="/skins/login/img/google.png" /></a>
+            ><a href="#"><img src="/skins/login/img/google.png" alt="google"/></a>
         </li>
         <li>
-            <a href="#"><img src="/skins/login/img/linkedin.png" /></a>
+            <a href="#"><img src="/skins/login/img/linkedin.png" alt="linkedin"/></a>
         </li>
     </ul>
 {% endmacro %}
@@ -123,7 +123,7 @@
         <table>
             <tr>
                 <td style="width:55px;">
-                    <img src="{{  token.getIdentity().getImageURI() }}"/>
+                    <img src="{{  token.getIdentity().getImageURI() }}" alt="avatar profil"/>
                 </td>
                 <td>
                     <ul class="unstyled">
