@@ -47,6 +47,8 @@ $finder
     ->name('.travis.yml')
     ->name('vendors.win.php')
     ->name('builder.php')
+    ->name('behat.yml')
+    ->name('behat.yml.sample')
     ->ignoreDotFiles(false)
     ->ignoreVCS(false)
     ->in(__DIR__);
@@ -87,6 +89,7 @@ $finder
     ->name('angular-mocks')
     ->name('angular-scenario')
     ->name('qunit')
+    ->name('features')
     ->ignoreDotFiles(false)
     ->ignoreVCS(false)
     ->in(__DIR__);
