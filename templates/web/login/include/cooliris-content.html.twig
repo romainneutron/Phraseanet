@@ -1,23 +1,17 @@
 <div class="row-fluid">
-    <div class="span12" style="height:360px;">
-        <object id="o" width="100%" height="360px"
-          classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-          >
+    <div class="span12">
+        <object id="o" name="cooliris_wall" data="https://apps.cooliris.com/embed/cooliris.swf" style="width:100%;height:360px" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
             <param name="wmode" value="transparent">
-            <param name="movie"
-              value="https://apps.cooliris.com/embed/cooliris.swf" />
+            <param name="movie" value="https://apps.cooliris.com/embed/cooliris.swf" />
             <param name="allowFullScreen" value="true" />
             <param name="allowScriptAccess" value="always" />
             <param name="flashvars"
-              value="feed=/feeds/cooliris/&glowColor=#0077BC&style=dark&backgroundColor=#000000&showChrome=false&showEMbed=false&showSearch=false" />
-            <embed wmode="transparent" type="application/x-shockwave-flash"
+              value="{{ "feed=/feeds/cooliris/&style=dark&backgroundColor=#141414&showChrome=false&showEMbed=false&showSearch=false"|url_encode(true) }}" />
+            <embed style="width:100%;height:360px;" wmode="transparent" type="application/x-shockwave-flash"
               src="https://apps.cooliris.com/embed/cooliris.swf"
-              flashvars="feed=/feeds/cooliris/&glowColor=#0077BC&style=dark&backgroundColor=#000000&showChrome=false&showEMbed=false&showSearch=false"
-              width="100%"
-              height="360"
+              flashvars="{{ "feed=/feeds/cooliris/&style=dark&backgroundColor=#141414&showChrome=false&showEMbed=false&showSearch=false"|url_encode(true) }}"
               allowFullScreen="true"
-              allowScriptAccess="always">
-              </embed>
+              allowScriptAccess="always" />
         </object>
     </div>
 </div>
