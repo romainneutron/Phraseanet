@@ -321,7 +321,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -590,6 +590,22 @@
                 "uploadable"
             ],
             "time": "2013-03-05 06:32:22"
+        },
+        {
+            "name": "google-plus/api-client",
+            "version": "0.6.1",
+            "dist": {
+                "type": "tar",
+                "url": "http://google-api-php-client.googlecode.com/files/google-api-php-client-0.6.1.tar.gz",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            }
         },
         {
             "name": "grom/silex-service-provider",
@@ -1570,7 +1586,7 @@
         },
         {
             "name": "silex/web-profiler",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "target-dir": "Silex/Provider",
             "source": {
                 "type": "git",
@@ -2483,7 +2499,6 @@
         "neutron/silex-filesystem-provider": 20,
         "phpexiftool/exiftool": 20,
         "silex/silex": 20,
-        "silex/web-profiler": 20,
         "tecnick.com/tcpdf": 20,
         "twig/extensions": 20,
         "doctrine/data-fixtures": 20
