@@ -34,7 +34,8 @@ class LessCompile extends Command
     protected function doExecute(InputInterface $input, OutputInterface $output)
     {
         $files = array(
-            __DIR__ . '/../../../../../www/skins/login/css/style.css' => realpath(__DIR__ . '/../../../../../www/skins/login/less/style.less'),
+            __DIR__ . '/../../../../../www/skins/build/login.css' => realpath(__DIR__ . '/../../../../../www/skins/login/less/login.less'),
+            __DIR__ . '/../../../../../www/skins/build/account.css' => realpath(__DIR__ . '/../../../../../www/skins/account/account.less'),
         );
 
         $output->writeln('Building Assets...');
