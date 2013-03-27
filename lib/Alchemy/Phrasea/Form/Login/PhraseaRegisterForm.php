@@ -11,6 +11,7 @@
 
 namespace Alchemy\Phrasea\Form\Login;
 
+use Alchemy\Phrasea\Utilities\String\Camelizer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -20,11 +21,13 @@ class PhraseaRegisterForm extends AbstractType
 {
     private $available;
     private $params;
+    private $camelizer;
 
-    public function __construct(array $available, array $params = array())
+    public function __construct(array $available, array $params = array(), Camelizer $camelizer = null)
     {
         $this->available = $available;
         $this->params = $params;
+        $this->camelizer = $camelizer ?: new Camelizer();
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -37,8 +40,8 @@ class PhraseaRegisterForm extends AbstractType
             ),
         ));
 
-        $builder->add('passwordConfirm', 'password', array(
-            'label' => _('Password (confirmation)'),
+        $builder->add('password', 'password', array(
+            'label' => _('Password'),
             'required' => true,
             'constraints' => array(
                 new Assert\NotBlank()
@@ -47,7 +50,7 @@ class PhraseaRegisterForm extends AbstractType
 
         $builder->add('passwordConfirm', 'password', array(
             'label' => _('Password (confirmation)'),
-            'required' => true,
+            'required' => false,
             'constraints' => array(
                 new Assert\NotBlank()
             )
@@ -59,12 +62,24 @@ class PhraseaRegisterForm extends AbstractType
         ));
 
         foreach ($this->params as $param) {
-            $builder->add($param['name'], $this->getType($param['name']), array(
-                'label'       => $this->getLabel($param['name']),
-                'required'    => $param['required'],
-                'constraints' => $this->getConstraints($param['name']),//, $param['constraints']),
-            ));
+            $name = $param['name'];
+            if (isset($this->available[$name])) {
+                $builder->add(
+                    $this->camelizer->camelize($name, '-'),
+                    $this->getType($name),
+                    array(
+                        'label'       => $this->getLabel($name),
+                        'required'    => $param['required'],
+                        'constraints' => $this->getConstraints($name),//, $param['constraints']),
+                    )
+                );
+            }
         }
+    }
+
+    public function getName()
+    {
+        return null;
     }
 
     private function getType($name)
@@ -80,10 +95,5 @@ class PhraseaRegisterForm extends AbstractType
     private function getConstraints($name, array $constraints = array())
     {
         return isset($this->available[$name]['constraints']) ? $this->available[$name]['constraints'] : array();
-    }
-
-    public function getName()
-    {
-        return null;
     }
 }
