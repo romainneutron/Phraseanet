@@ -88,6 +88,8 @@ use Alchemy\Phrasea\Core\Provider\RegistrationServiceProvider;
 use Alchemy\Phrasea\Core\Provider\SearchEngineServiceProvider;
 use Alchemy\Phrasea\Core\Provider\TaskManagerServiceProvider;
 use Alchemy\Phrasea\Core\Provider\UnicodeServiceProvider;
+use Alchemy\Phrasea\Twig\JSUniqueID;
+use Alchemy\Phrasea\Twig\Camelize;
 use FFMpeg\FFMpegServiceProvider;
 use Grom\Silex\ImagineServiceProvider;
 use MediaVorus\MediaVorusServiceProvider;
@@ -546,8 +548,8 @@ class Application extends SilexApplication
                 $twig->addExtension(new \Twig_Extensions_Extension_Intl());
                 // add filters truncate, wordwrap, nl2br
                 $twig->addExtension(new \Twig_Extensions_Extension_Text());
-                $twig->addExtension(new \Alchemy\Phrasea\Twig\JSUniqueID());
-                $twig->addExtension(new \Alchemy\Phrasea\Twig\DashedPropertyToCamelCase());
+                $twig->addExtension(new JSUniqueID());
+                $twig->addExtension(new Camelize());
 
                 $twig->addFilter('serialize', new \Twig_Filter_Function('serialize'));
                 $twig->addFilter('stristr', new \Twig_Filter_Function('stristr'));
