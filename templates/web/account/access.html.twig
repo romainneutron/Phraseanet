@@ -7,7 +7,7 @@
 {% set selected = "access" %}
 
 {% block content %}
-    <form name="updatingDemand" id="updatingDemand" action="/account/" method="post">
+    <form name="updatingDemand" id="updatingDemand" action="{{ path('submit_update_account') }}" method="post">
         <table style="table-layout: fixed; width:100%">
             <tr>
                 <td  style="width: 180px; text-align: right">&nbsp;</td>
@@ -169,7 +169,7 @@
             {% endfor %}
         </table>
         <div class="form-actions">
-            <input type="submit" class="btn btn-primary" value="{% trans 'boutton::valider' %}">
+            <input type="submit" class="btn btn-info" value="{% trans 'boutton::valider' %}">
         </div>
     </form>
 {% endblock %}
