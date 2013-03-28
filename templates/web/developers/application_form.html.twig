@@ -1,13 +1,7 @@
 {% extends 'account/base.html.twig' %}
 
-{% use "developers/header.html.twig" with header as parent_header %}
-
 {% block title %}
     {% trans 'new client application' %}
-{% endblock %}
-
-{% block head %}
-    {{ block('parent_header') }}
 {% endblock %}
 
 {% set selected = "" %}
@@ -51,7 +45,7 @@
 {% endmacro %}
 
 {% block content %}
-<form id="form_create" action="/developers/application/" method="POST" class="form-horizontal">
+<form id="form_create" action="{{ path('developers_application_new') }}" method="POST" class="form-horizontal">
     {% if form is none %}
       {% set name, description, website, callback = '', '', '', ''%}
       {% set app_type = 'web'%}
@@ -117,11 +111,11 @@
     {% endif %}
 
     <div class="form-actions">
-        <button class="app_submit btn btn-info" type="submit">
+        <button class="btn btn-info" type="submit">
             {% trans 'boutton::valider' %}
         </button>
 
-        <a class="btn btn-primary" href="/developers/applications/">
+        <a class="btn" href="{{ path('developers_applications') }}">
             {% trans 'boutton::retour' %}
         </a>
     </div>

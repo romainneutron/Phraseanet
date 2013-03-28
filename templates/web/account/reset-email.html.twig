@@ -52,7 +52,7 @@ $(document).ready(function() {
     {% if updateMsg is not none %}
         <div class="alert alert-info">
             <div>{{ updateMsg }}</div>
-            <a href="/account/" target="_self">{% trans 'admin::compte-utilisateur retour a mon compte'%}</a>
+            <a href="{{ path('account') }}" target="_self">{% trans 'admin::compte-utilisateur retour a mon compte'%}</a>
         </div>
     {% else %}
 
@@ -63,10 +63,10 @@ $(document).ready(function() {
         <div class="notice" style="text-align:center;margin:20px 0">
             {{ noticeMsg }}
         </div>
-        <a href="/account/" target="_self">{% trans 'admin::compte-utilisateur retour a mon compte'%}</a>
+        <a href="{{ path('reset_password') }}" target="_self">{% trans 'admin::compte-utilisateur retour a mon compte'%}</a>
     {% endif %}
 
-    <form method="POST" action="/account/reset-email/" id="mainform" class="form-horizontal">
+    <form method="POST" action="{{ path('reset_email') }}" id="mainform" class="form-horizontal">
         <div class="control-group">
             <label class="form_label control-label" for="form_login">{% trans 'admin::compte-utilisateur identifiant' %}</label>
             <div class="controls">

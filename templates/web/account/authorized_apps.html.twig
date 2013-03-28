@@ -4,52 +4,6 @@
     {% trans 'Granted third party applications' %}
 {% endblock %}
 
-{% block head %}
-<script type="text/javascript">
-$(document).ready(function(){
-    $(".app-btn").live("click", function(){
-        var $this = $(this);
-
-        if (!$this.hasClass("authorize"))
-        {
-            var revoke = 1;
-            var button_class = "authorize";
-            var old_class ="revoke";
-            var string  = "{% trans 'Authoriser l\'access' %}";
-        }
-        else ($this.hasClass("authorize"))
-        {
-            var revoke = 0;
-            var button_class = "revoke";
-            var old_class ="authorize";
-            var string  = "{% trans 'Revoquer l\'access' %}";
-        }
-
-        var app_id = $this.attr("value");
-
-        var opts = {
-            type:"POST",
-            url : '/security/application/' + app_id + '/grant/',
-            dataType: 'json',
-            data : {
-                revoke : revoke
-            },
-            success : function(data){
-                if(data.success)
-                {
-                    div = $this.closest("div");
-                    current.removeClass(old_class).addClass(button_class);
-                    current.attr("value", acc_id);
-                    current.empty().append(string);
-                }
-            }
-        }
-        $.ajax(opts);
-    });
-});
-</script>
-{% endblock %}
-
 {% set selected = "applications" %}
 
 {% block content %}
@@ -63,26 +17,26 @@ $(document).ready(function(){
                         <li id='app_{{application.get_id}}'>
                             <div>
                                 {% set account = application.get_user_account(app['authentication'].getUser()) %}
-                                {% if account.is_revoked() is empty %}
-                                  <button type='button' class='revoke app-btn btn btn-danger btn-small' value='{{application.get_id()}}'>{% trans 'Revoquer l\'access' %}</button>
-                                {% else %}
-                                  <button type='button' class='authorize app-btn btn btn-success btn-small' value='{{application.get_id()}}'>{% trans 'Authoriser l\'access' %}</button>
-                                {% endif %}
-                                <span class='app-row'>
-                                  <a href="{{application.get_website()}}" target="_blank">
-                                    <strong>{{application.get_name()}}</strong>
-                                  </a>
-                                  {% if application.get_creator() is not none %}
-                                    {% set user_name = application.get_creator().get_display_name() %}
-                                    {% trans %}
-                                    par {{user_name}}
-                                    {% endtrans %}
-                                  {% endif%}
-                                </span>
-                                <span class='app-row'>
-                                  <font size="1"><i>{{ app['date-formatter'].getPrettyString(application.get_created_on()) }}</i></font>
-                                </span>
-                                <span class='app-row'>{{ application.get_description()|truncate(80, true, '...') }}</span>
+                                <a href="{{ path('grant_app_access', {'application_id':application.get_id()}) }}" class='revoke app-btn btn btn-small pull-right {% if account.is_revoked() is empty %}hidden{% endif %}' value='{{application.get_id()}}'>{% trans 'Revoquer l\'access' %}</a>
+                                <a href="{{ path('grant_app_access', {'application_id':application.get_id()}) }}"  class='authorize app-btn btn btn-small pull-right {% if account.is_revoked() is not empty %}hidden{% endif %}' value='{{application.get_id()}}'>{% trans 'Authoriser l\'access' %}</a>
+                                <p class='app-row'>
+                                    <a href="{{application.get_website()}}" target="_blank">
+                                        <strong>{{application.get_name()}}</strong>
+                                    </a>
+                                    {% if application.get_creator() is not none %}
+                                        <small>
+                                            {% set user_name = application.get_creator().get_display_name() %}
+                                            {% trans %}
+                                                par {{user_name}}
+                                            {% endtrans %}
+                                        </small>
+                                    {% endif%}
+                                </p>
+                                <p class='app-row'>
+                                    <span class="status text-error {% if account.is_revoked() is not empty %}hidden{% endif %}">{% trans "Not Allowed"%}</span>
+                                    <span class="status text-success {% if account.is_revoked() is empty %}hidden{% endif %}">{% trans "Allowed"%}</span>
+                                </p>
+                                <p class='app-row'>{{ application.get_description()|truncate(120, true, '...') }}</p>
                             </div>
                         </li>
                     {%endfor%}
@@ -95,14 +49,19 @@ $(document).ready(function(){
         </div>
     </div>
     <div class="span6">
-        <h3>{% trans 'Applications' %}</h3>
-        <p>
-          {% trans 'Naviguez et gerez les applications que vous souhaitez autoriser a acceder a vos informations Phraseanet' %}
-        </p>
-        <h3>{% trans 'Developpeurs' %}</h3>
-        <p>
-            {% trans 'Les developpeurs peuvent editer l\'enregistrement de leurs application grace a l\'onglet "developpeurs" ci-dessus' %}
-        </p>
+        <div class="well well-small">
+            <h3>{% trans 'Thir party applications' %}</h3>
+            <p>
+              {% trans "A third-party application is a product developed apart from Phraseanet and that is used to access your Phraseanet data." %}
+            </p>
+        </div>
+
+        <div class="well well-small">
+            <h3>{% trans 'Developpeurs' %}</h3>
+            <p>
+                {% trans 'Les developpeurs peuvent editer l\'enregistrement de leurs application grace a l\'onglet "developpeurs" ci-dessus' %}
+            </p>
+        </div>
     </div>
 </div>
 {% endblock %}
