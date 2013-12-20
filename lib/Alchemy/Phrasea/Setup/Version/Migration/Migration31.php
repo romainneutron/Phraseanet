@@ -423,16 +423,16 @@ class Migration31 implements MigrationInterface
         ];
 
         $retrieve_old_credentials = function () {
-                require __DIR__ . '/../../../../../../config/connexion.inc';
+            require __DIR__ . '/../../../../../../config/connexion.inc';
 
-                return [
-                    'hostname' => $hostname,
-                    'port'     => $port,
-                    'user'     => $user,
-                    'password' => $password,
-                    'dbname'   => $dbname,
-                ];
-            };
+            return [
+                'hostname' => $hostname,
+                'port'     => $port,
+                'user'     => $user,
+                'password' => $password,
+                'dbname'   => $dbname,
+            ];
+        };
 
         $params = $retrieve_old_credentials();
 
@@ -449,7 +449,7 @@ class Migration31 implements MigrationInterface
             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
             `key` char(32) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
             `value` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
-            `type` enum('string','boolean','array','integer') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'string',
+            `type` enum('string','boolean','array','integer','text','binary','timezone','enum_multi','enum') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'string',
             PRIMARY KEY (`id`),
             UNIQUE KEY `UNIQUE` (`key`)
           ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;");
