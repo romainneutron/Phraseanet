@@ -87,6 +87,6 @@ class ACLProvider
      */
     private function fetch(User $user)
     {
-        return self::$cache[$user->getId()] = new \ACL($user, $this->app);
+        return self::$cache[$user->getId()] = new \ACL($user, $this->app, $this->app['phraseanet.appbox']->get_connection(), $this->app['EM']->getRepository('Phraseanet:FeedItem'));
     }
 }

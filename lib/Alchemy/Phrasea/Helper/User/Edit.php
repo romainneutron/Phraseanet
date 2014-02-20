@@ -648,7 +648,7 @@ class Edit extends \Alchemy\Phrasea\Helper\Helper
             throw new AccessDeniedHttpException('You are not the owner of the template');
         }
 
-        $base_ids = array_keys($this->app['acl']->get($this->app['authentication']->getUser())->get_granted_base(['canadmin']));
+        $collections = $this->app['acl']->get($this->app['authentication']->getUser())->get_granted_base(['canadmin']);
 
         foreach ($this->users as $usr_id) {
             $user = $this->app['manipulator.user']->getRepository()->find($usr_id);
@@ -657,7 +657,7 @@ class Edit extends \Alchemy\Phrasea\Helper\Helper
                 continue;
             }
 
-            $this->app['acl']->get($user)->apply_model($template, $base_ids);
+            $this->app['acl']->get($user)->apply_model($this->app['acl']->get($template), $collections);
         }
 
         return $this;

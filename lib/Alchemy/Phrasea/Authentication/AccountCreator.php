@@ -82,15 +82,15 @@ class AccountCreator
 
         $user = $app['manipulator.user']->createUser($login, $this->random->generatePassword(), $email);
 
-        $base_ids = [];
+        $collections = [];
         foreach ($this->appbox->get_databoxes() as $databox) {
             foreach ($databox->get_collections() as $collection) {
-                $base_ids[] = $collection->get_base_id();
+                $collections[] = $collection;
             }
         }
 
         foreach (array_merge($this->templates, $templates) as $template) {
-            $app['acl']->get($user)->apply_model($template, $base_ids);
+            $app['acl']->get($user)->apply_model($app['acl']->get($template), $collections);
         }
 
         return $user;

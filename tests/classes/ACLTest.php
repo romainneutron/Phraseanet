@@ -66,7 +66,7 @@ class ACLTest extends \PhraseanetAuthenticatedTestCase
             self::$DI['app']['acl']->get(self::$DI['user_template'])->set_limits($base_id, 0);
         }
 
-        self::$DI['app']['acl']->get(self::$DI['user_1'])->apply_model(self::$DI['user_template'], $base_ids);
+        self::$DI['app']['acl']->get(self::$DI['user_1'])->apply_model(self::$DI['app']['acl']->get(self::$DI['user_template']), $base_ids);
 
         foreach ($base_ids as $base_id) {
             $this->assertTrue(self::$DI['app']['acl']->get(self::$DI['user_1'])->has_access_to_base($base_id));
@@ -89,7 +89,7 @@ class ACLTest extends \PhraseanetAuthenticatedTestCase
             self::$DI['app']['acl']->get(self::$DI['user_template'])->set_limits($base_id, 1, $limit_from, $limit_to);
         }
 
-        self::$DI['app']['acl']->get(self::$DI['user_2'])->apply_model(self::$DI['user_template'], $base_ids);
+        self::$DI['app']['acl']->get(self::$DI['user_2'])->apply_model(self::$DI['app']['acl']->get(self::$DI['user_template']), $base_ids);
 
         foreach ($base_ids as $base_id) {
             $this->assertTrue(self::$DI['app']['acl']->get(self::$DI['user_2'])->has_access_to_base($base_id));

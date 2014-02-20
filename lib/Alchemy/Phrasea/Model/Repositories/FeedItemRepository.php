@@ -26,13 +26,12 @@ class FeedItemRepository extends EntityRepository
     /**
      * Checks if a record is published in a public feed.
      *
-     * @param Application $app
      * @param integer     $sbas_id
      * @param integer     $record_id
      *
      * @return Boolean
      */
-    public function isRecordInPublicFeed(Application $app, $sbas_id, $record_id)
+    public function isRecordInPublicFeed($sbas_id, $record_id)
     {
         $dql = 'SELECT i
             FROM Phraseanet:FeedItem i

@@ -398,13 +398,13 @@ class Login implements ControllerProviderInterface
                     if ($app['conf']->get(['registry', 'registration', 'auto-register-enabled'])) {
                         $template_user = $app['manipulator.user']->getRepository()->findByLogin(User::USER_AUTOREGISTER);
 
-                        $base_ids = [];
+                        $collections = [];
 
                         foreach (array_keys($inscOK) as $base_id) {
-                            $base_ids[] = $base_id;
+                            $collections[] = \collection::get_from_base_id($app, $base_id);
                         }
 
-                        $app['acl']->get($user)->apply_model($template_user, $base_ids);
+                        $app['acl']->get($user)->apply_model($app['acl']->get($template_user), $collections);
                     }
 
                     $autoReg = $app['acl']->get($user)->get_granted_base();
@@ -809,8 +809,8 @@ class Login implements ControllerProviderInterface
         $usr_base_ids = array_keys($app['acl']->get($user)->get_granted_base());
         $app['acl']->get($user)->revoke_access_from_bases($usr_base_ids);
 
-        $invite_base_ids = array_keys($app['acl']->get($invite_user)->get_granted_base());
-        $app['acl']->get($user)->apply_model($invite_user, $invite_base_ids);
+        $invite_collections = $app['acl']->get($invite_user)->get_granted_base();
+        $app['acl']->get($user)->apply_model($app['acl']->get($invite_user), $invite_collections);
 
         $this->postAuthProcess($app, $user);
 

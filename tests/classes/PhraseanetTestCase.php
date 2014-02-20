@@ -398,7 +398,7 @@ abstract class PhraseanetTestCase extends WebTestCase
         switch ($user->getId()) {
             case self::$fixtureIds['user']['test_phpunit']:
                 self::giveRightsToUser($app, $user);
-                $app['acl']->get($user)->set_admin(true);
+                $app['manipulator.user']->promote($user);
                 $app['acl']->get(self::$DI['user'])->revoke_access_from_bases([self::$DI['collection_no_access']->get_base_id()]);
                 $app['acl']->get(self::$DI['user'])->set_masks_on_base(self::$DI['collection_no_access_by_status']->get_base_id(), '00000000000000000000000000010000', '00000000000000000000000000010000', '00000000000000000000000000010000', '00000000000000000000000000010000');
                 break;
@@ -410,7 +410,7 @@ abstract class PhraseanetTestCase extends WebTestCase
             case self::$fixtureIds['user']['test_phpunit_alt2']:
             case self::$fixtureIds['user']['user_template']:
                 self::giveRightsToUser($app, $user);
-                $app['acl']->get($user)->set_admin(false);
+                $app['manipulator.user']->demote($user);
                 $app['acl']->get(self::$DI['user'])->revoke_access_from_bases([self::$DI['collection_no_access']->get_base_id()]);
                 $app['acl']->get(self::$DI['user'])->set_masks_on_base(self::$DI['collection_no_access_by_status']->get_base_id(), '00000000000000000000000000010000', '00000000000000000000000000010000', '00000000000000000000000000010000', '00000000000000000000000000010000');
                 break;

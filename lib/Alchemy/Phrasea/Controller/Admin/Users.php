@@ -446,9 +446,9 @@ class Users implements ControllerProviderInterface
                     $cache_to_update[$usr] = true;
 
                     $user_template = $app['manipulator.user']->getRepository()->find($template_id);
-                    $base_ids = array_keys($app['acl']->get($user_template)->get_granted_base());
+                    $collections = $app['acl']->get($user_template)->get_granted_base();
 
-                    $app['acl']->get($user)->apply_model($user_template, $base_ids);
+                    $app['acl']->get($user)->apply_model($app['acl']->get($user_template), $collections);
 
                     if (!isset($done[$usr])) {
                         $done[$usr] = [];
@@ -826,7 +826,7 @@ class Users implements ControllerProviderInterface
                         }
 
                         $app['acl']->get($newUser)->apply_model(
-                            $app['manipulator.user']->getRepository()->find($model), array_keys($app['acl']->get($app['authentication']->getUser())->get_granted_base(['manage']))
+                            $app['acl']->get($app['manipulator.user']->getRepository()->find($model)), $app['acl']->get($app['authentication']->getUser())->get_granted_base(['manage'])
                         );
 
                         $nbCreation++;
