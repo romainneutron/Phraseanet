@@ -65,4 +65,4 @@ script:
   - bin/developer phraseanet:regenerate-sqlite
   - ./node_modules/.bin/grunt test
   #ls -d tests/Alchemy/Tests/Phrasea/*/ | parallel --gnu 'bin/phpunit {};'
-  - bin/phpunit
+  - php -d zend.enable_gc=0 bin/phpunit
